@@ -20,8 +20,8 @@ def update(x, y, v_x, v_y, a_x, a_y, dt):
 v_0 = float(input("What is the magnitude of the initial velocity?: "))
 theta = float(input("What is the launch angle in degrees?: "))
 dt = float(input("What is the size of the time step?: "))
-m = float(input("What is the projectile mass?: "))
-C = float(input("What is the drag coefficient?: ")) # 4E-3 is appromate value for golf ball
+m = float(input("What is the projectile mass?: ")) # golf ball ~ 0.04593 kg
+C = float(input("What is the drag coefficient?: ")) # golf ball ~ 4E-4 kg/m
 
 # Break the initial velocity into components
 v_x = v_0*math.cos(theta*math.pi/180.0)
