@@ -18,6 +18,18 @@ for i in range(1,len(sys.argv)):
     elif (sys.argv[i] == "-C"):
         C = float(sys.argv[i + 1])
         i += 1
+    elif (sys.argv[i] == "-h" or sys.argv[i] == "--help"):
+        print("usage: projectileMotion.py <OPTIONS>")
+        print("\nAvailable options:")
+        print("    -v0 20.0       Set the magnitude of the initial velocity (m/s).")
+        print("    -theta 30.0    Set the angle of the initial velocity (degrees).")
+        print("    -dt 0.002      Set the size of the time step to use (seconds).")
+        print("    -m 0.04593     Set the mass of the projectile (kg).")
+        print("    -C 0.0004      Set the drag coefficient C = 0.5*c*rho*A")
+        print("\nAny of the numerical values can be changed to those desired for your")
+        print("problem. Pay attention to the units expected and how the drag coefficient")
+        print("is defined.")
+        quit()
 
 g = 9.8 # Earth's surface gravity in units of m/s^2
 
@@ -35,7 +47,7 @@ def update(x, y, v_x, v_y, a_x, a_y, dt):
     v_y = v_y + a_y*dt
     return x, y, v_x, v_y
 
-# Get the initial input
+# Get the initial input to fill in holes
 if (len(sys.argv) < 6):
     if (v_0 == -math.pi):
         v_0 = float(input("What is the magnitude of the initial velocity?: "))
