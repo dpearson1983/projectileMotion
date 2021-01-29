@@ -1,4 +1,23 @@
 import math # for sin, cos, and pi
+import sys # To process command line arguments
+
+v_0 = 0; theta = 0; dt = 0; m = 0; C = 0
+for i in range(1,len(sys.argv)):
+    if (sys.argv[i] == "-v0"):
+        v_0 = float(sys.argv[i + 1])
+        i += 1
+    elif (sys.argv[i] == "-theta"):
+        theta = float(sys.argv[i + 1])
+        i += 1
+    elif (sys.argv[i] == "-dt"):
+        dt = float(sys.argv[i + 1])
+        i += 1
+    elif (sys.argv[i] == "-m"):
+        m = float(sys.argv[i + 1])
+        i += 1
+    elif (sys.argv[i] == "-C"):
+        C = float(sys.argv[i + 1])
+        i += 1
 
 g = 9.8 # Earth's surface gravity in units of m/s^2
 
@@ -17,11 +36,12 @@ def update(x, y, v_x, v_y, a_x, a_y, dt):
     return x, y, v_x, v_y
 
 # Get the initial input
-v_0 = float(input("What is the magnitude of the initial velocity?: "))
-theta = float(input("What is the launch angle in degrees?: "))
-dt = float(input("What is the size of the time step?: "))
-m = float(input("What is the projectile mass?: ")) # golf ball ~ 0.04593 kg
-C = float(input("What is the drag coefficient?: ")) # golf ball ~ 4E-4 kg/m
+if (len(sys.argv) == 1):
+    v_0 = float(input("What is the magnitude of the initial velocity?: "))
+    theta = float(input("What is the launch angle in degrees?: "))
+    dt = float(input("What is the size of the time step?: "))
+    m = float(input("What is the projectile mass?: ")) # golf ball ~ 0.04593 kg
+    C = float(input("What is the drag coefficient?: ")) # golf ball ~ 4E-4 kg/m
 
 # Break the initial velocity into components
 v_x = v_0*math.cos(theta*math.pi/180.0)
